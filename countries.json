@@ -1,0 +1,76 @@
+﻿{
+	"countries" : {
+		"russian_federation" : {
+			"name": "The Russian Federation",
+			"info": "**Ruler** Savva Volkov\n**Ruling Party** United Russia *(Yedinaya Rossiya - YR)*\n**Government System** Federal dominant-party democracy under a presidential dictatorship\n**Economic System** State capitalism\n**Interest Groups** Party Apparatchiks, Oligarchs, Security- and Military Forces, Religious Institutions, Controlled Opposition\n**Opposition** Anyone who actually believes in anything\n**ForPol** Nationalist *(de-jure)*, Isolationist *(de-facto)*",
+			"player": 1002539739292909648,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945770431500440/image.png",
+			"flag": ":flag_ru:"
+		},
+		"komi_republic" : {
+			"name": "The Komi Republic",
+			"info": "**Ruler** Fictional\n**Ruling Party** Communist Party of the Russian Federation *(Kommunisticheskaya Partiya Rossiyskoy Federatsii - KPRF)*\n**Government System** Semi-presidential democracy\n**Economic System** State Capitalism\n**Interest Groups** Different KPRF Branches, Oligarchs\n**Opposition** United Russia, Natives\n**ForPol** Regionalist",
+			"player": 908046349482729514,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945769710063736/image.png",
+			"flag": "<:flag_kom:1108679822168838194>"
+		},
+		"nenetsia" : {
+			"name": "The Nenetsian Okrugs",
+			"info": "**Ruler** Fictional\n**Ruling Party** United Russia *(de-jure)*, Gazprom *(de-facto)*\n**Government System** Corporatocracy\n**Economic System** State Capitalism\n**Interest Groups** Oligarchs\n**Opposition** Communist Party of the Russian Federation, Natives\n**ForPol** Regionalist",
+			"player": 291154360111595520,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945769445830777/image.png",
+			"flag": "<:flag_nen:1108679823875907676>"
+		},
+		"southern_military_district" : {
+			"name": "The Southern Military District",
+			"info": "**Ruler** Ramzan Kadyrov\n**Ruling Party** Ground Forces *(Sukhoputnyye Voyska - SV)*\n**Government System** Military dictatorship\n**Economic System** 'You, give me that'\n**Interest Groups** Military Forces\n**Opposition** United Russia, Islamists, Separatists\n**ForPol** Nationalist",
+			"player": 413001332832600074,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945769122861167/image.png",
+			"flag": "<:flag_smd:1108679828837773343>"
+		},
+		"free_russian_government" : {
+			"name": "The Free Russian Government",
+			"info": "**Ruler** Ilya Ponomarev\n**Ruling Party** Congress of People's Deputies *(S'yezd Narodnykh Deputatov - SND)*\n**Government System** Unelected provisional government\n**Economic System** Free-market capitalism \n**Interest Groups** Liberals, Conservatives, Nationalists, Ukrainian advisors and oligarchs\n**Opposition** Left-wingers\n**ForPol** Pro-Ukrainian",
+			"player": 381860334228733963,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945768820887703/image.png",
+			"flag": "<:flag_frg:1108679818226184274>"
+		},
+		"free_idel-ural" : {
+			"name": "Free Idel-Ural",
+			"info": "**Ruler** İskändär Xäliulla\n**Ruling Party** Idel-Ural Kurultai\n**Government System** Confederation of democratic states under a military dictatorship\n**Economic System** Free-market capitalism\n**Interest Groups** Various Natives, Free Nations of Post-Russia Forum, Ukrainian advisors and oligarchs\n**Opposition** Ethnic Russians\n**ForPol** Pro-Ukrainian",
+			"player": 243828748116295691,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945768573415606/image.png",
+			"flag": "<:flag_ide:1108679820142977045>"
+		},
+		"democratic_government" : {
+			"name": "The Democratic Government of the Russian Federation",
+			"info": "**Ruler** Fictional\n**Ruling Party** Fictional\n**Government System** Parliamentary democracy\n**Economic System** State capitalism in transition to free-market capitalism\n**Interest Groups** Socialists, Liberals, Conservatives, Nationalists, Western advisors and investors\n**Opposition** Anarchists, Separatists\n**ForPol** Pro-Western",
+			"player": 257552149037187072,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945769944952882/image.png",
+			"flag": "<:flag_dgr:1108679814661013536>"
+		},
+		"omsk" : {
+			"name": "The Omsk Council",
+			"info": "**Ruler** Regional Defense Council of Omsk\n**Ruling Party** Combat Organization of Anarcho-Communists *(Boyevaya Organizatsiya Anarkho-Kommunistov - BOAK)* \n**Government System** Participatory democracy\n**Economic System** Socialism\n**Interest Groups** Working class\n**Opposition** Middle- and upper classes\n**ForPol** Regionalist",
+			"player": 324513673316007936,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945768296583199/image.png",
+			"flag": "<:flag_oms:1108679827025829899>"
+		},
+		"far_east" : {
+			"name": "The Far Eastern Republic",
+			"info": "**Ruler** Ekaterina Morozova\n**Ruling Party** Liberal Democratic Party of Russia *(Liberal'no-Demokraticheskaya Partiya Rossii - LDPR)*\n**Government System** Presidential democracy\n**Economic System** State capitalism in transition to free-market capitalism\n**Interest Groups** Regionalists, Chinese and Japanese investors\n**Opposition** Communist Party of the Russian Federation, Nationalists\n**ForPol** Pro-Chinese",
+			"player": 274320673219018754,
+			"armies":[],
+			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945767956852908/image.png",
+			"flag": "<:flag_fer:1108679817324404847>"
+		}
+	}
+}
