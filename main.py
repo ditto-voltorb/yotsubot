@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 from lib import *
+import random
+import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -10,6 +12,20 @@ bot = commands.Bot(
     intents=intents,
     activity = discord.Activity(type=discord.ActivityType.watching, name='Yotsuba&!: The Animation')
     )
+
+@bot.slash_command(description="Roll a die. Default is a d100.",guild_ids=[1106333118253772850])
+async def roll(
+    ctx: discord.ApplicationContext,
+    dicemax: discord.Option(int, "Maximum possible number to roll.", name="dice-max") = 100
+):
+    roll = random.randint(1, dicemax)
+    await ctx.respond("Rolling.")
+    await asyncio.sleep(0.5)
+    await ctx.edit(content="Rolling..")
+    await asyncio.sleep(0.5)
+    await ctx.edit(content="Rolling...")
+    await asyncio.sleep(0.5)
+    await ctx.edit(content=f"Rolling...!\nYou rolled a {roll} {rollReaction(roll)}")
 
 @bot.slash_command(description="Displays info about your or others' countries.",guild_ids=[1106333118253772850])
 async def country(
@@ -22,12 +38,14 @@ async def country(
             await ctx.respond(embed=getCountry(ctx, auth))
     else:
         if listorperson == "list":
-            embed=discord.Embed(title=f"Country List", color=discord.Color.green())
-            for key, value in countries_dict.items():
-                player = ctx.guild.get_member(int(value.player))
-                embed.add_field(name=f"{value.name} {value.flag}", value=f"Led by {player.display_name}\n{value.info}", inline=False)
-            embed.set_thumbnail(url="https://media.discordapp.net/attachments/1106333118794829886/1109320114974773268/mapper.png?width=960&height=678")
-            await ctx.respond(embed=embed)
+            view_dict = {
+            "Player Countries": players_dict,
+            "Non-Player Countries [1-9]": dict(list(nonplayer_countries_dict.items())[0:7]),
+            "Non-Player Countries [10-18]": dict(list(nonplayer_countries_dict.items())[8:17]),
+            "Foreign Nations": foreign_countries_dict
+            }
+            view = Buttons(embed_list=view_dict, guild=ctx.guild, img="https://media.discordapp.net/attachments/1106333118794829886/1109320114974773268/mapper.png?width=960&height=678")
+            await ctx.respond(embed=view.embed_list[0], view=view)
         elif listorperson[0] == "<":
             auth = ctx.guild.get_member(int(listorperson[2:-1])).id
             await ctx.respond(embed=getCountry(ctx, auth))
@@ -128,6 +146,7 @@ async def debug(
         await ctx.respond("This command is admin only!", ephemeral=True)
     else:
         exec(command)
+
 
 
 bot.run('MTEwOTU3MDQ1MjAyMTU3OTgyMA.G3llZc.48D_N0Ol1fcc-h0-yCK0O8O3cmyDkqhBn2y9wY')

@@ -18,13 +18,14 @@ unit_casualities = {
 }
 
 class Country:
-	def __init__(self, name, player, image, flag, info="", reserves=[]):
+	def __init__(self, name, player, image, flag, info="", reserves=[], nonplayer=False):
 		self.name = name
 		self.player = player
 		self.info = info
 		self.armies = {}
 		self.image = image
 		self.flag = flag
+		self.nonplayer = nonplayer
 		self.reserves = reserves
 		self.reserve_count = {}
 		self.getReserveCount()
@@ -90,14 +91,42 @@ class Unit:
 		self.casualities_mod = unit_casualities[style]
 		self.injured = injured
 
+class Buttons(discord.ui.View):
+	def __init__(self, *, embed_list, guild, img=None, timeout=180):
+		super().__init__(timeout=timeout)
+		self.embed_list = [embedify(title, dict, guild, img) for title, dict in embed_list.items()]
+		self.i = 0
+		self.guild = guild
+
+	def updateI(self, i_oper):
+		self.i = min(len(self.embed_list)-1, max(0, self.i+i_oper))
+
+	@discord.ui.button(label="◀",style=discord.ButtonStyle.gray)
+	async def back(self,button:discord.ui.Button,interaction:discord.Interaction):
+		self.updateI(-1)
+		await interaction.response.edit_message(embed=self.embed_list[self.i])
+	@discord.ui.button(label="▶",style=discord.ButtonStyle.gray)
+	async def forward(self,button:discord.ui.Button,interaction:discord.Interaction):
+		self.updateI(1)
+		await interaction.response.edit_message(embed=self.embed_list[self.i])
+
 countries_dict = {}
 players_dict = {}
+nonplayer_countries_dict = {}
+foreign_countries_dict = {}
 with open("countries.json", "r", encoding='utf-8-sig') as f:
 	y = json.loads(f.read())
 	for i in y["countries"]:
-		countries_dict[i] = Country(y["countries"][i]["name"], y["countries"][i]["player"],
-			y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"])
-		players_dict[int(y["countries"][i]["player"])] = countries_dict[i]
+		if y["countries"][i]["player"] == 0:
+			nonplayer_countries_dict[i] = Country(y["countries"][i]["name"], 0,
+				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True)
+		elif y["countries"][i]["player"] == 1:
+			foreign_countries_dict[i] = Country(y["countries"][i]["name"], 0,
+				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True)
+		else:
+			countries_dict[i] = Country(y["countries"][i]["name"], y["countries"][i]["player"],
+				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"])
+			players_dict[int(y["countries"][i]["player"])] = countries_dict[i]
 
 def getCountry(ctx, player):
 	embed=discord.Embed(title=f"{players_dict[player].name}",color=discord.Color.green())
@@ -129,3 +158,30 @@ def isAdmin(person):
 
 def userIDFromAt(ctx, at):
 	return ctx.guild.get_member(int(at[2:-1])).id
+
+def embedify(title, dict, guild, img=None):
+	embed=discord.Embed(title=title, color=discord.Color.green())
+	for key, value in dict.items():
+		if isinstance(value, Country):
+			if value.player != 0 and value.player != 1:
+				player = guild.get_member(int(value.player))
+				embed.add_field(name=f"{value.name} {value.flag}", value=f"Led by {player.display_name}\n{value.info}", inline=False)
+			else:
+				embed.add_field(name=f"{value.name} {value.flag}", value=f"{value.info}", inline=False)
+	if img is not None:
+		embed.set_thumbnail(url=img)
+	return embed
+
+def rollReaction(roll):
+	if roll == 1:
+		return ":frowning2:\n`Catastrophic Failure!`"
+	elif roll in range(1,16):
+		return ":slight_frown:\n`Embarrasing Failure`"
+	elif roll in range(16,51):
+		return ":confused:\n`Failure`"
+	elif roll in range(51,86):
+		return ":slight_smile:\n`Success`"
+	elif roll in range(86,100):
+		return ":smile:\n`Great Success`"
+	elif roll == 100:
+		return ":face_holding_back_tears:\n`Incredible Success!`"
