@@ -30,14 +30,14 @@ async def roll(
 @bot.slash_command(description="Displays info about your or others' countries.",guild_ids=[1106333118253772850])
 async def country(
     ctx: discord.ApplicationContext,
-    listorperson: discord.Option(str, "Takes `list` or user @.", name="list-or-person",) = False
+    listorpersonorname: discord.Option(str, "Takes `list`,user @, or country name (doesn't have to be whole).", name="list-or-person-or-name",) = False
 ):
-    if listorperson == False:
+    if listorpersonorname == False:
         auth = ctx.author.id
         if auth in players_dict:
             await ctx.respond(embed=getCountry(ctx, auth))
     else:
-        if listorperson == "list":
+        if listorpersonorname == "list":
             view_dict = {
             "Player Countries": players_dict,
             "Non-Player Countries [1-9]": dict(list(nonplayer_countries_dict.items())[0:7]),
@@ -46,12 +46,26 @@ async def country(
             }
             view = Buttons(embed_list=view_dict, guild=ctx.guild, img="https://media.discordapp.net/attachments/1106333118794829886/1109320114974773268/mapper.png?width=960&height=678")
             await ctx.respond(embed=view.embed_list[0], view=view)
-        elif listorperson[0] == "<":
-            auth = ctx.guild.get_member(int(listorperson[2:-1])).id
+        elif listorpersonorname[0] == "<":
+            auth = ctx.guild.get_member(int(listorpersonorname[2:-1])).id
             await ctx.respond(embed=getCountry(ctx, auth))
-        elif int(listorperson) in players_dict:
-            auth = ctx.guild.get_member(int(listorperson)).id
-            await ctx.respond(embed=getCountry(ctx, auth))
+        else:
+            auth = 0
+            listorpersonorname = listorpersonorname.title()
+            for i in list(players_dict.keys()):
+                if listorpersonorname in players_dict[i].name:
+                    auth = int(players_dict[i].player)
+                    await ctx.respond(embed=getCountry(ctx, auth))
+            if auth == 0:
+                for i in list(nonplayer_countries_dict.keys()):
+                    if listorpersonorname in nonplayer_countries_dict[i].name:
+                        auth = nonplayer_countries_dict[i]
+                        await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
+            if auth == 0:
+                for i in list(foreign_countries_dict.keys()):
+                    if listorpersonorname in foreign_countries_dict[i].name:
+                        auth = foreign_countries_dict[i]
+                        await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
 
 @bot.slash_command(description="Admin only! Give or remove units from a country's reserves.",guild_ids=[1106333118253772850])
 async def unit(

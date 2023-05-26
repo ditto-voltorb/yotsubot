@@ -128,27 +128,48 @@ with open("countries.json", "r", encoding='utf-8-sig') as f:
 				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"])
 			players_dict[int(y["countries"][i]["player"])] = countries_dict[i]
 
-def getCountry(ctx, player):
-	embed=discord.Embed(title=f"{players_dict[player].name}",color=discord.Color.green())
-	info = players_dict[player].info.split("\n")
-	info_list = []
-	for i in info:
-		info_list.append(i.split("** "))
-	for i in info_list:
-		embed.add_field(name=f"{i[0][2:]}", value=f"{i[1]}", inline=True)
-	players_dict[player].getReserveCount()
-	reserves_msg = ""
-	for k, v in players_dict[player].reserve_count.items():
-		reserves_msg += f"{k}: {v[0]} ({v[1]} injured)\n"
-	embed.add_field(name="Reserves", value=reserves_msg, inline=True)
-	armies_msg = ""
-	for i in players_dict[player].armies:
-		temp_dict = players_dict[player].armies[i].counts
-		armies_msg += f"`{i}` ({temp_dict['irregular'][0]}/{temp_dict['regular'][0]}/{temp_dict['tank'][0]}/{temp_dict['heli'][0]})\n"
-	embed.add_field(name="Armies", value=armies_msg, inline=True)
-	embed.set_author(name=ctx.guild.get_member(int(player)).display_name, icon_url=ctx.guild.get_member(int(player)).avatar.url)
-	embed.set_thumbnail(url=f"{players_dict[player].image}")
-	return embed
+def getCountry(ctx, player, nonplayer=False):
+	if nonplayer == False:
+		embed=discord.Embed(title=f"{players_dict[player].name}",color=discord.Color.green())
+		info = players_dict[player].info.split("\n")
+		info_list = []
+		for i in info:
+			info_list.append(i.split("** "))
+		for i in info_list:
+			embed.add_field(name=f"{i[0][2:]}", value=f"{i[1]}", inline=True)
+		players_dict[player].getReserveCount()
+		reserves_msg = ""
+		for k, v in players_dict[player].reserve_count.items():
+			reserves_msg += f"{k}: {v[0]} ({v[1]} injured)\n"
+		embed.add_field(name="Reserves", value=reserves_msg, inline=True)
+		armies_msg = ""
+		for i in players_dict[player].armies:
+			temp_dict = players_dict[player].armies[i].counts
+			armies_msg += f"`{i}` ({temp_dict['irregular'][0]}/{temp_dict['regular'][0]}/{temp_dict['tank'][0]}/{temp_dict['heli'][0]})\n"
+		embed.add_field(name="Armies", value=armies_msg, inline=True)
+		embed.set_author(name=ctx.guild.get_member(int(player)).display_name, icon_url=ctx.guild.get_member(int(player)).avatar.url)
+		embed.set_thumbnail(url=f"{players_dict[player].image}")
+		return embed
+	else:
+		embed=discord.Embed(title=f"{player.name}",color=discord.Color.green())
+		info = player.info.split("\n")
+		info_list = []
+		for i in info:
+			info_list.append(i.split("** "))
+		for i in info_list:
+			embed.add_field(name=f"{i[0][2:]}", value=f"{i[1]}", inline=True)
+		player.getReserveCount()
+		reserves_msg = ""
+		for k, v in player.reserve_count.items():
+			reserves_msg += f"{k}: {v[0]} ({v[1]} injured)\n"
+		embed.add_field(name="Reserves", value=reserves_msg, inline=True)
+		armies_msg = ""
+		for i in player.armies:
+			temp_dict = player.armies[i].counts
+			armies_msg += f"`{i}` ({temp_dict['irregular'][0]}/{temp_dict['regular'][0]}/{temp_dict['tank'][0]}/{temp_dict['heli'][0]})\n"
+		embed.add_field(name="Armies", value=armies_msg, inline=True)
+		embed.set_thumbnail(url=f"{player.image}")
+		return embed
 
 def isAdmin(person):
 	stringed_roles = [str(x) for x in person.roles]
