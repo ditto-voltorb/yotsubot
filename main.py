@@ -3,7 +3,13 @@ from discord.ext import commands
 from lib import *
 import random
 import asyncio
+import logging
 
+logger = logging.getLogger('discord')
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
@@ -18,6 +24,7 @@ async def roll(
     ctx: discord.ApplicationContext,
     dicemax: discord.Option(int, "Maximum possible number to roll.", name="dice-max") = 100
 ):
+    print(f"{ctx.author}: /roll dice-max:{dicemax}")
     roll = random.randint(1, dicemax)
     await ctx.respond("Rolling.")
     await asyncio.sleep(0.5)
@@ -30,8 +37,9 @@ async def roll(
 @bot.slash_command(description="Displays info about your or others' countries.",guild_ids=[1106333118253772850])
 async def country(
     ctx: discord.ApplicationContext,
-    listorpersonorname: discord.Option(str, "Takes `list`,user @, or country name (doesn't have to be whole).", name="list-or-person-or-name",) = False
+    listorpersonorname: discord.Option(str, "Takes `list`, user @, or country name (doesn't have to be whole).", name="list-or-person-or-name",) = False
 ):
+    print(f"{ctx.author}: /country listorpersonorname:{listorpersonorname}")
     if listorpersonorname == False:
         auth = ctx.author.id
         if auth in players_dict:
@@ -40,11 +48,12 @@ async def country(
         if listorpersonorname == "list":
             view_dict = {
             "Player Countries": players_dict,
-            "Non-Player Countries [1-9]": dict(list(nonplayer_countries_dict.items())[0:7]),
-            "Non-Player Countries [10-18]": dict(list(nonplayer_countries_dict.items())[8:17]),
-            "Foreign Nations": foreign_countries_dict
+            "Non-Player Countries [1-9]": nonplayer_countries[0:9],
+            "Non-Player Countries [10-18]": nonplayer_countries[9:18],
+            "Non-Player Countries [19-27]": nonplayer_countries[18:],
+            "Foreign Nations": foreign_countries
             }
-            view = Buttons(embed_list=view_dict, guild=ctx.guild, img="https://media.discordapp.net/attachments/1106333118794829886/1109320114974773268/mapper.png?width=960&height=678")
+            view = Buttons(embed_list=view_dict, guild=ctx.guild, img="https://cdn.discordapp.com/attachments/1106350205793742858/1112484510030901369/image.png")
             await ctx.respond(embed=view.embed_list[0], view=view)
         elif listorpersonorname[0] == "<":
             auth = ctx.guild.get_member(int(listorpersonorname[2:-1])).id
@@ -57,14 +66,14 @@ async def country(
                     auth = int(players_dict[i].player)
                     await ctx.respond(embed=getCountry(ctx, auth))
             if auth == 0:
-                for i in list(nonplayer_countries_dict.keys()):
-                    if listorpersonorname in nonplayer_countries_dict[i].name:
-                        auth = nonplayer_countries_dict[i]
+                for i in nonplayer_countries:
+                    if listorpersonorname in i.name:
+                        auth = i
                         await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
             if auth == 0:
-                for i in list(foreign_countries_dict.keys()):
-                    if listorpersonorname in foreign_countries_dict[i].name:
-                        auth = foreign_countries_dict[i]
+                for i in foreign_countries:
+                    if listorpersonorname in i.name:
+                        auth = i
                         await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
 
 @bot.slash_command(description="Admin only! Give or remove units from a country's reserves.",guild_ids=[1106333118253772850])
@@ -102,6 +111,7 @@ async def army(
     tanks: discord.Option(int, "# of tanks") = 0,
     helis: discord.Option(int, "# of helis") = 0
 ):
+    print(f"{ctx.author}: /army newdeleterename:{newdeleterename} name:{name} new_name:{new_name} irregulars:{irregulars} regulars:{regulars} tanks:{tanks} helis:{helis}")
     country = players_dict[ctx.author.id]
     if newdeleterename == "new":
         if (irregulars + regulars + tanks + helis) > 10:
@@ -162,5 +172,8 @@ async def debug(
         exec(command)
 
 
+KEY = ""
+with open("client_key.txt", "r") as f:
+    KEY = f.read()
 
-bot.run('MTEwOTU3MDQ1MjAyMTU3OTgyMA.G3llZc.48D_N0Ol1fcc-h0-yCK0O8O3cmyDkqhBn2y9wY')
+bot.run(KEY)

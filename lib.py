@@ -112,17 +112,17 @@ class Buttons(discord.ui.View):
 
 countries_dict = {}
 players_dict = {}
-nonplayer_countries_dict = {}
-foreign_countries_dict = {}
+nonplayer_countries = []
+foreign_countries = []
 with open("countries.json", "r", encoding='utf-8-sig') as f:
 	y = json.loads(f.read())
 	for i in y["countries"]:
 		if y["countries"][i]["player"] == 0:
-			nonplayer_countries_dict[i] = Country(y["countries"][i]["name"], 0,
-				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True)
+			nonplayer_countries.append(Country(y["countries"][i]["name"], 0,
+				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True))
 		elif y["countries"][i]["player"] == 1:
-			foreign_countries_dict[i] = Country(y["countries"][i]["name"], 0,
-				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True)
+			foreign_countries.append(Country(y["countries"][i]["name"], 0,
+				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"], nonplayer=True))
 		else:
 			countries_dict[i] = Country(y["countries"][i]["name"], y["countries"][i]["player"],
 				y["countries"][i]["image"], y["countries"][i]["flag"], y["countries"][i]["info"])
@@ -180,15 +180,24 @@ def isAdmin(person):
 def userIDFromAt(ctx, at):
 	return ctx.guild.get_member(int(at[2:-1])).id
 
-def embedify(title, dict, guild, img=None):
+def embedify(title, array, guild, img=None):
 	embed=discord.Embed(title=title, color=discord.Color.green())
-	for key, value in dict.items():
-		if isinstance(value, Country):
-			if value.player != 0 and value.player != 1:
-				player = guild.get_member(int(value.player))
-				embed.add_field(name=f"{value.name} {value.flag}", value=f"Led by {player.display_name}\n{value.info}", inline=False)
-			else:
-				embed.add_field(name=f"{value.name} {value.flag}", value=f"{value.info}", inline=False)
+	if isinstance(array, dict):
+		for key, value in array.items():
+			if isinstance(value, Country):
+				if value.player != 0 and value.player != 1:
+					player = guild.get_member(int(value.player))
+					embed.add_field(name=f"{value.name} {value.flag}", value=f"Led by {player.display_name}\n{value.info}", inline=False)
+				else:
+					embed.add_field(name=f"{value.name} {value.flag}", value=f"{value.info}", inline=False)
+	else:
+		for value in array:
+			if isinstance(value, Country):
+				if value.player != 0 and value.player != 1:
+					player = guild.get_member(int(value.player))
+					embed.add_field(name=f"{value.name} {value.flag}", value=f"Led by {player.display_name}\n{value.info}", inline=False)
+				else:
+					embed.add_field(name=f"{value.name} {value.flag}", value=f"{value.info}", inline=False)
 	if img is not None:
 		embed.set_thumbnail(url=img)
 	return embed

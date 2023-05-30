@@ -70,10 +70,10 @@
 			"player": 274320673219018754,
 			"armies":[],
 			"image": "https://cdn.discordapp.com/attachments/1105500478135074959/1109945767956852908/image.png",
-			"flag": "<:flag_fer:1108679817324404847>"
+			"flag": "<:flag_fer:1111740320573575238>"
 		},
 		"baltic_republic" : {
-			"name": "The Baltic Republic",
+			"name": "1. The Baltic Republic",
 			"info": "**Ruler** Gogol Kiselev\n**Ruling Party** Baltic Republican Party *(Baltiyskaya Respublikanskaya Partiya - BRP)*\n**Government System** Parliamentary democracy\n**Economic System** Free-market capitalism\n**ForPol** Pro-Western",
 			"player": 0,
 			"armies":[],
@@ -81,7 +81,7 @@
 			"flag": "<:flag_bal:1111337376535556186>"
 		},
 		"pskov" : {
-			"name": "The Pskov National Liberation Zone",
+			"name": "2. The Pskov National Liberation Zone",
 			"info": "**Ruler** Grigoriy Ilin\n**Ruling Party** National Liberation Movement *(Natsionalno-Osvoboditelnoye Dvizheniye - NOD)*\n**Government System** Civilian dictatorship\n**Economic System** State capitalism\n**ForPol** Nationalist *(de-jure)*, Pro-Federation *(de-facto)*",
 			"player": 0,
 			"armies":[],
@@ -89,7 +89,7 @@
 			"flag": "<:flag_plz:1111337400824774776>"
 		},
 		"belarus_exile" : {
-			"name": "The Byelorussian Government-In-Exile",
+			"name": "3. The Byelorussian Government-In-Exile",
 			"info": "**Ruler** Alexander Lukashenko\n**Ruling Party** Lukashenko Loyalists *(Lukašenkaŭcy)*\n**Government System** Military-civilian dictatorship\n**Economic System** State capitalism\n**ForPol** Pro-Federation",
 			"player": 0,
 			"armies":[],
@@ -97,7 +97,7 @@
 			"flag": ":flag_by:"
 		},
 		"ingushetia" : {
-			"name": "The Islamic State Of Ingushetia",
+			"name": "4. The Islamic State Of Ingushetia",
 			"info": "**Ruler** Abdul Hakim al-Shishani\n**Ruling Party** Soldiers of the Caucasus *(Ajnad al-Kavkaz - AK)*\n**Government System** Islamic Emirate\n**Economic System** Plundering\n**ForPol** Jihadist",
 			"player": 0,
 			"armies":[],
@@ -105,7 +105,7 @@
 			"flag": "<:flag_ing:1111337392515842148>"
 		},
 		"chechnya" : {
-			"name": "The Chechen Republic Of Ichkeria",
+			"name": "5. The Chechen Republic Of Ichkeria",
 			"info": "**Ruler** Adam Osmayev\n**Ruling Party** Dzhokhar Dudayev Battalion\n**Government System** Military Dictatorship\n**Economic System** State capitalism\n**ForPol** Pro-Ukrainian",
 			"player": 0,
 			"armies":[],
@@ -113,7 +113,7 @@
 			"flag": "<:flag_che:1111337382323695696>"
 		},
 		"dagestan" : {
-			"name": "The Republic Of Dagestan",
+			"name": "6. The Republic Of Dagestan",
 			"info": "**Ruler** Lev Korolev\n**Ruling Party** Dagestan Independence Party *(Partiya Nezavisimosti Dagestana - PND)*\n**Government System** Semi-presidential democracy\n**Economic System** Free-market capitalism\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -121,7 +121,7 @@
 			"flag": "<:flag_dag:1111337389554667540>"
 		},
 		"nogai" : {
-			"name": "The Kalmyk-Nogai Republic",
+			"name": "7. The Kalmyk-Nogai Republic",
 			"info": "**Ruler** Kolya Zakharov\n**Ruling Party** Oirat-Kalmyk People's Congress *(Kongress Oyrat-Kalmyskogo Naroda - KOKN)*\n**Government System** Parliamentary democracy\n**Economic System** Free-market capitalism\n**ForPol** Pro-Ukrainian",
 			"player": 0,
 			"armies":[],
@@ -129,7 +129,7 @@
 			"flag": "<:flag_knr:1111337394361344030>"
 		},
 		"stalingrad" : {
-			"name": "The Stalingrad Soviet Socialist Republic",
+			"name": "8. The Stalingrad Soviet Socialist Republic",
 			"info": "**Ruler** Aleks Volkov\n**Ruling Party** 'Communist Party of Stalingrad' *(de-jure)*, Volkov Clique *(de-facto)*\n**Government System** Warlordism\n**Economic System** 'War Communism' *(de-jure)*, Plundering *(de-facto)*\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -137,7 +137,7 @@
 			"flag": "<:flag_sta:1111337408982695986>"
 		},
 		"volga_germany" : {
-			"name": "The Volga German Republic",
+			"name": "9. The Volga German Republic",
 			"info": "**Ruler** 'Max Mustermann' (Toma Borisov)\n**Ruling Party** 'Union of Volga Germans' *(de-jure)*, Mustermann Clique *(de-facto)*\n**Government System** Warlordism\n**Economic System** Plundering\n**ForPol** Pro-Ukrainian",
 			"player": 0,
 			"armies":[],
@@ -145,7 +145,7 @@
 			"flag": "<:flag_vgr:1111337426363887626>"
 		},
 		"penza" : {
-			"name": "Penza",
+			"name": "10. Penza",
 			"info": "**Ruler** Tikhon Alexeev\n**Ruling Party** Alexeev Clique\n**Government System** Warlordism\n**Economic System** Plundering\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -153,7 +153,7 @@
 			"flag": "<:flag_pen:1111337397993615380>"
 		},
 		"ulyanovsk" : {
-			"name": "Ulyanovsk",
+			"name": "11. Ulyanovsk",
 			"info": "**Ruler** Misha Smirnov\n**Ruling Party** Smirnov Clique\n**Government System** Warlordism\n**Economic System** Plundering\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -161,7 +161,7 @@
 			"flag": "<:flag_uly:1111337413126652076>"
 		},
 		"samara" : {
-			"name": "Samara",
+			"name": "12. Samara",
 			"info": "**Ruler** Vlad Fedorov\n**Ruling Party** Fedorov Clique\n**Government System** Warlordism\n**Economic System** Plundering\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -169,7 +169,7 @@
 			"flag": "<:flag_sam:1111337403714637945>"
 		},
 		"ural_republic" : {
-			"name": "The Ural Republic",
+			"name": "13. The Ural Republic",
 			"info": "**Ruler** Slava Egorov\n**Ruling Party** Ural Republican Association *(Ural'skoye Respublikanskoye Ob'yedineniye - URO)*\n**Government System** Presidential democracy\n**Economic System** Free-market Capitalism\n**ForPol** Pro-Ukrainian",
 			"player": 0,
 			"armies":[],
@@ -177,7 +177,7 @@
 			"flag": "<:flag_ura:1111337415760679093>"
 		},
 		"tuva" : {
-			"name": "The Republic Of Tuva",
+			"name": "14. The Republic Of Tuva",
 			"info": "**Ruler** Kaadyr-ool Khovalyg\n**Ruling Party** People's Sovereignty\n**Government System** Semi-presidential democracy\n**Economic System** Free-market Capitalism\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -185,7 +185,7 @@
 			"flag": "<:flag_tuv:1111337411230838916>"
 		},
 		"buryatia" : {
-			"name": "The Republic Of Buryatia",
+			"name": "15. The Republic Of Buryatia",
 			"info": "**Ruler** Alexandra Garmazhapova\n**Ruling Party** Free Buryatia Congress\n**Government System** Parliamentary democracy\n**Economic System** Free-market Capitalism\n**ForPol** Pro-Western",
 			"player": 0,
 			"armies":[],
@@ -193,7 +193,7 @@
 			"flag": "<:flag_bur:1111337379211509830>"
 		},
 		"chita" : {
-			"name": "The Chita Republic",
+			"name": "16. The Chita Republic",
 			"info": "**Ruler** Pyotr Novikov\n**Ruling Party** Chita Council *(Chitinskiy Sovet - CS)*\n**Government System** Direct democracy\n**Economic System** State Capitalism\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
@@ -201,7 +201,7 @@
 			"flag": "<:flag_chi:1111337385171628092>"
 		},
 		"sakha" : {
-			"name": "The Sakha People's Republic",
+			"name": "17. The Sakha People's Republic",
 			"info": "**Ruler** Stanislav Kuzmin\n**Ruling Party** Communist Party of Yakutia *(Kommunisticheskaya Partiya Yakutii - KPY)*\n**Government System** Marxist-Leninist Dictatorship\n**Economic System** 'Socialism with Sakha Characteristics' (de-jure), State Capitalism (de-facto)\n**ForPol** Pro-Chinese",
 			"player": 0,
 			"armies":[],
@@ -209,20 +209,28 @@
 			"flag": "<:flag_spr:1111337407363698718>"
 		},
 		"chukchi" : {
-			"name": "The Chukchi Republic",
+			"name": "18. The Chukchi Republic",
 			"info": "**Ruler** Adrik Vorobev\n**Ruling Party** Chukchi Liberation Army *(Chukotskaya Osvoboditel'naya Armiya - COA)*\n**Government System** Military Dictatorship\n**Economic System** State Capitalism\n**ForPol** Regionalist",
 			"player": 0,
 			"armies":[],
 			"image": "https://cdn.discordapp.com/attachments/1106350205793742858/1111305944635281408/image.png",
 			"flag": "<:flag_chu:1111337387902115911>"
 		},
+		"karelia" : {
+            "name": "19. The Republic of Karelia",
+            "info": "**Ruler** Roman Zolotov\n**Ruling Party** National Guard of the Russian Federation *(Federal'naya Sluzhba Voysk Natsional'noy Gvardii Rossiyskoy Federatsii - Rosgvardiya)*\n**Government System** Military Dictatorship\n**Economic System** State Capitalism\n**ForPol** Pro-Federation",
+            "player": 0,
+            "armies":[],
+            "image": "https://cdn.discordapp.com/attachments/1106350205793742858/1112473782351839352/image.png",
+            "flag": "<:flag_kar:1112471970894839941>"
+        },
 		"ukraine" : {
 			"name": "Ukraine",
 			"info": "**Ruler** Volodymyr Zelenskyy *(de-jure)*, Valerii Zaluzhnyi *(de-facto)*\n**Ruling Party** Servant of the People *(Sluha Narodu - SN)*\n**Government System** Semi-presidential democracy under a military dictatorship\n**Economic System** Free-market capitalism\n**ForPol** Nationalism",
 			"player": 1,
 			"armies":[],
 			"image": "https://cdn.discordapp.com/attachments/1106350205793742858/1111348560311636088/image.png",
-			"flag": "<:flag_upa:1108783709999607898>"
+			"flag": ":flag_ua:<:flag_upa:1108783709999607898>"
 		},
 		"belarus" : {
 			"name": "The Republic Of Belarus",
@@ -230,7 +238,7 @@
 			"player": 1,
 			"armies":[],
 			"image": "https://cdn.discordapp.com/attachments/1106350205793742858/1111348252047069314/image.png",
-			"flag": "<:flag_frg:1108679818226184274>"
+			"flag": "<:flag_bel:1111340142490304654>"
 		},
 		"kazakhstan" : {
 			"name": "The Republic Of Kazakhstan",
