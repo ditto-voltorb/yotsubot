@@ -42,7 +42,7 @@ async def roll(
         await ctx.edit(content=f"Rolling...!\nYou rolled a {roll} {rollReaction(roll)}")
     except:
         with open("log.txt", "a") as f:
-            f.write(f"\nerror! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception).__name__}")
 
 @bot.slash_command(description="Displays info about your or others' countries.",guild_ids=[1106333118253772850])
 async def country(
@@ -90,7 +90,7 @@ async def country(
                             await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
     except:
         with open("log.txt", "a") as f:
-            f.write(f"\nerror! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception).__name__}")
 
 @bot.slash_command(description="Admin only! Give or remove units from a country's reserves.",guild_ids=[1106333118253772850])
 async def unit(
@@ -181,7 +181,7 @@ async def army(
                 await ctx.respond(f"No army called `{name}`. Did you get the name wrong?", ephemeral=True)
     except:
         with open("log.txt", "a") as f:
-            f.write(f"\nerror! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception).__name__}")
 
 @bot.slash_command(description="Admin only! Debugging tool.",guild_ids=[1106333118253772850])
 async def debug(
