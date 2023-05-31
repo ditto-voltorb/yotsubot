@@ -29,7 +29,7 @@ async def roll(
     dicemax: discord.Option(int, "Maximum possible number to roll.", name="dice-max") = 100
 ):
     with open("log.txt", "a") as f:
-        f.write(f"{ctx.author}: /roll dice-max:{dicemax}")
+        f.write(f"\n{ctx.author}: /roll dice-max:{dicemax}")
     print(f"{ctx.author}: /roll dice-max:{dicemax}")
     try:
         roll = random.randint(1, dicemax)
@@ -42,7 +42,7 @@ async def roll(
         await ctx.edit(content=f"Rolling...!\nYou rolled a {roll} {rollReaction(roll)}")
     except:
         with open("log.txt", "a") as f:
-            f.write(f"error! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception)}")
 
 @bot.slash_command(description="Displays info about your or others' countries.",guild_ids=[1106333118253772850])
 async def country(
@@ -50,7 +50,7 @@ async def country(
     listorpersonorname: discord.Option(str, "Takes `list`, user @, or country name (doesn't have to be whole).", name="list-or-person-or-name",) = False
 ):
     with open("log.txt", "a") as f:
-        f.write(f"{ctx.author}: /country listorpersonorname:{listorpersonorname}")
+        f.write(f"\n{ctx.author}: /country listorpersonorname:{listorpersonorname}")
     print(f"{ctx.author}: /country listorpersonorname:{listorpersonorname}")
     try:
         if listorpersonorname == False:
@@ -90,7 +90,7 @@ async def country(
                             await ctx.respond(embed=getCountry(ctx, auth, nonplayer=True))
     except:
         with open("log.txt", "a") as f:
-            f.write(f"error! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception)}")
 
 @bot.slash_command(description="Admin only! Give or remove units from a country's reserves.",guild_ids=[1106333118253772850])
 async def unit(
@@ -128,7 +128,7 @@ async def army(
     helis: discord.Option(int, "# of helis") = 0
 ):
     with open("log.txt", "a") as f:
-        f.write(f"{ctx.author}: /army newdeleterename:{newdeleterename} name:{name} new_name:{new_name} irregulars:{irregulars} regulars:{regulars} tanks:{tanks} helis:{helis}")
+        f.write(f"\n{ctx.author}: /army newdeleterename:{newdeleterename} name:{name} new_name:{new_name} irregulars:{irregulars} regulars:{regulars} tanks:{tanks} helis:{helis}")
     print(f"{ctx.author}: /army newdeleterename:{newdeleterename} name:{name} new_name:{new_name} irregulars:{irregulars} regulars:{regulars} tanks:{tanks} helis:{helis}")
     try:   
         country = players_dict[ctx.author.id]
@@ -181,7 +181,7 @@ async def army(
                 await ctx.respond(f"No army called `{name}`. Did you get the name wrong?", ephemeral=True)
     except:
         with open("log.txt", "a") as f:
-            f.write(f"error! {type(Exception)}")
+            f.write(f"\nerror! {type(Exception)}")
 
 @bot.slash_command(description="Admin only! Debugging tool.",guild_ids=[1106333118253772850])
 async def debug(
